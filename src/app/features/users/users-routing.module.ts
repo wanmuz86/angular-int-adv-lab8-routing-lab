@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { authGuard } from '../../auth.guard';
+import { userResolver } from '../../user.resolver';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       {
          // localhost:4200/users/1,  // localhost:4200/users/2
         path:':id',
-        component:UserDetailComponent
+        component:UserDetailComponent,
+        resolve:{user:userResolver} // Resolve/Retrieve the user data before activating the route
       }
     ]
   }
