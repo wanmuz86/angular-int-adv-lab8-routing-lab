@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { authGuard } from '../../auth.guard';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     // localhost:4200/users
     // Nested routing
     path:'',
+    canActivate: [authGuard], // Add your auth guard here if needed
     component: UserListComponent,
     children:[
       {
